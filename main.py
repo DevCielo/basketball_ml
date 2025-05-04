@@ -1,6 +1,6 @@
 from ultralytics import YOLO
 
-model = YOLO('yolov8x')
+model = YOLO("models/ball_detector_model.pt")
 
 results = model.predict("input_videos/video_1.mp4", save=True)
 print(results)
