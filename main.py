@@ -1,9 +1,12 @@
-from ultralytics import YOLO
+from utils import read_video, save_video
 
-model = YOLO("models/ball_detector_model.pt")
+def main():
 
-results = model.predict("input_videos/video_1.mp4", save=True)
-print(results)
-print("================")
-for box in results[0].boxes:
-    print(box)
+    # Read Video
+    video_frames = read_video("input_videos/video_1.mp4")
+
+    # Save Video
+    save_video(video_frames, "output_videos/output_video.avi")
+
+if __name__ == "__main__":
+    main()
