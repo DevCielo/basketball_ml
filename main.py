@@ -18,6 +18,9 @@ def main():
     # Remove wrong ball Detections
     ball_tracks = ball_tracker.remove_wrong_detections(ball_tracks)
 
+    # Interpolate Ball Tracks
+    ball_tracks = ball_tracker.interpolate_ball_position(ball_tracks)
+
     # Draw Output
     # Initialize Drawer
     player_tracks_drawer = PlayerTracksDrawer()
