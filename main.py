@@ -1,6 +1,7 @@
 from utils import read_video, save_video
 from trackers import PlayerTracker, BallTracker
 from drawers import PlayerTracksDrawer, BallTracksDrawer
+from team_assigner import TeamAssigner
 
 def main():
 
@@ -17,9 +18,14 @@ def main():
 
     # Remove wrong ball Detections
     ball_tracks = ball_tracker.remove_wrong_detections(ball_tracks)
-
     # Interpolate Ball Tracks
     ball_tracks = ball_tracker.interpolate_ball_position(ball_tracks)
+
+    # Assign Player Teams
+    team_assigner = TeamAssigner()
+    player_assignment = team_assigner.get_player_teams_across_frames(video_frames, player_tracks, read_from_stub=True, stub_path="stubs/player_assignment_stub.pkl")
+
+    print(player_teams)
 
     # Draw Output
     # Initialize Drawer
